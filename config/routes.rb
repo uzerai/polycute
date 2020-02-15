@@ -3,12 +3,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :registration, only: %i[create update delete]
-  resolve('registration') { route_for(:registration) }
+  post 'execute/:function_name', \
+      to: 'execution#execute', as: 'execution'
 
-  post 'functionality/:function_name', \
-      to: 'functionality#execute', as: 'execution'
-
-  resources :functionality, only: [:index]
+  resources :functionality, only: %i[index register]
   resolve('functionality') { route_for(:functionality) }
 end
