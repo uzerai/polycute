@@ -13,10 +13,11 @@
 ActiveRecord::Schema.define(version: 2020_02_14_142151) do
 
   create_table "functionalities", force: :cascade do |t|
-    t.string "uuid", default: "2c9fed0f-8bba-42fd-b7a8-6839d26b24d1", null: false
+    t.string "uuid", default: "90f20d31-e524-4c2e-9a6e-6c2118ca4a82", null: false
     t.string "name", null: false
     t.string "route", null: false
     t.json "variable_object", null: false
+    t.json "function_definition", null: false
     t.json "registration_payload", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

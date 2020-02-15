@@ -11,10 +11,11 @@ class FunctionalityController < ApplicationController
     json = JSON.parse(request.raw_post)
 
     functionality = Functionality.new \
-      name: json["name"].upcase,
-      route: json["route"].downcase,
+      name: json['name'].upcase,
+      route: json['route'].downcase,
       uuid: SecureRandom.uuid,
-      variable_object: json["variable_object"],
+      variable_object: json['variable_object'],
+      function_definition: json['function_definition'],
       registration_payload: json
 
     functionality.save if functionality.valid?
@@ -26,5 +27,4 @@ class FunctionalityController < ApplicationController
 
     render json: response.to_json
   end
-
 end

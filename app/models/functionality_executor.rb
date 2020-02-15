@@ -5,13 +5,13 @@ require_relative 'validation/argument_validator.rb'
 class FunctionalityExecutor
   include Validations
 
-  def initialize(variables, function_name)
+  def initialize(variables:, function_name:)
     @variables = variables
     @function = Functionality.find_by(name: function_name)
   end
 
   def execute
-    p "Executing functionality: #{@function.name}" if arguments_valid?
+      Execution.execute functionality: @function, arguments: @variables if arguments_valid?
   end
 
   private

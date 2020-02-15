@@ -6,6 +6,7 @@ class CreateFunctionalities < ActiveRecord::Migration[6.0]
       t.string :route, null: false
 
       t.json :variable_object, null: false
+      t.json :function_definition, null: false
 
       t.json :registration_payload, null: false
 

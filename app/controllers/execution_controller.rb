@@ -5,10 +5,14 @@ class ExecutionController < ApplicationController
 
   def execute
     executor = FunctionalityExecutor.new \
-      JSON.parse(request.raw_post)['variables'],
-      params[:function_name].upcase
+      variables: JSON.parse(request.raw_post)['variables'],
+      function_name: params[:function_name].upcase
 
-    executor.execute
+    results = executor.execute
+    render json: {
+      results: results,
+      errors: []
+    }.to_json
   end
 
 end
