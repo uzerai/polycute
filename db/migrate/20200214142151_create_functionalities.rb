@@ -12,5 +12,7 @@ class CreateFunctionalities < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+
+    add_index :functionalities, :uuid
   end
 end

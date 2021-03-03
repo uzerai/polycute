@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_02_14_142151) do
 
   create_table "functionalities", force: :cascade do |t|
-    t.string "uuid", default: "90f20d31-e524-4c2e-9a6e-6c2118ca4a82", null: false
+    t.string "uuid", default: "36e3ba2d-9c19-4d8c-8060-1713a5b395aa", null: false
     t.string "name", null: false
     t.string "route", null: false
     t.json "variable_object", null: false
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_02_14_142151) do
     t.json "registration_payload", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["uuid"], name: "index_functionalities_on_uuid"
   end
 
 end

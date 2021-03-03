@@ -11,14 +11,14 @@ class FunctionalityExecutor
   end
 
   def execute
-      Execution.execute functionality: @function, arguments: @variables if arguments_valid?
+    Execution.execute functionality: @function, arguments: @variables if arguments_valid?
   end
 
   private
 
   def arguments_valid?
-    raise(NotImplementedError, 'No function with that name.') if @function.nil?
-    raise(ArgumentError, 'Supplied variables were fucked') unless variables_valid?
+    fail NotImplementedError, 'No function with that name.' if @function.nil?
+		fail ArgumentError, 'Arguments provided do not match arguments expected.' unless variables_valid?
 
     true
   end

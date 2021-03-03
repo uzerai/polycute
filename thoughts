@@ -1,0 +1,13 @@
+Just some thoughts on the polycute project:
+ - Meant to be a pure server which accepts functionality and should be able to communicate with other running instances of itself to program them too.
+ - It would be fun to program that the node itself is what does the discovery from other nodes in the instance it is asked to do so (by possibly other nodes).
+		this would lead to instances where instead of producing an error when a functionality is requested which the current node can't deal with, it would send requests to the clostest other nodes which also may not have this functionality.
+		This would continue until a node with the functionality would be found and the result would be sent direcly back to the other node which would then display the answers and also send the other node the functionality for the functionality it lacked.
+
+ - This would create rippling effects that would be fun to mess around with.
+		in effect, I'll need to make some kind of monitoring software where all the nodes will send messages to a controller so we can visualize what's happening when I send one request -- it would be kinda fun to have this
+		like a control panel in a browser where I can simply send the requests to all the different nodes that report to the controller and they in turn would indicate activity in the network on some graph or something -- maybe websockets?
+ - Something else that would be cool is seeing the effect on if we implement "knowledgebases" or not in this model; ie, persisting known other nodes and which functionality they persist, and then forgetting. 
+ - Maybe use headers to indicate whether the service wishes for the functionality to be shared back; `x-polycute-sharemode: :send | :nosend` 
+ - Ruby is a good language for this since we can use metaprogramming to define maybe our own dsl as part of the executions.	
+
