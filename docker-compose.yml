@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  polycute_00:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.server
+      args:
+        USER_ID: "${USER_ID:-1000}" 
+        GROUP_ID: "${GROUP_ID:-1000}"
+    ports:
+      - '8010:8010'
+    env_file:
+      - .env
+    volumes:
+      - .:/opt/app
+
+  nginx_00:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.nginx
+    links:
+      - polycute_00
+    ports:
+      - '8020:8020'
