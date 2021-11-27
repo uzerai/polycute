@@ -2,6 +2,13 @@
 
 module Validations
 
+  OBJECT = {
+    name: "object",
+    types: [
+      Hash,
+    ]
+  }.freeze
+
   NUMBER = {
     name: 'number',
     types: [
@@ -18,6 +25,11 @@ module Validations
   }.freeze
 
   class ArgumentValidator
+
+    attr_reader :errors
+
+    # ArgumentValidator is usually given the `Function#variable_object` and the request JSON body
+    # and validates the body against the functionality definition of required arguments.
     def initialize(expected, given)
       @expected = expected
       @given = given
@@ -26,6 +38,8 @@ module Validations
     def valid?
       raise ArgumentError, 'Number of variables unexpected.' \
         unless @expected.keys.length == @given.keys.length
+
+      # TODO: Per-argument demarkation of validation error.
 
       @given.each do |variable, value|
         raise ArgumentError, "Variable '#{variable}' did not match expected type." \
@@ -36,6 +50,7 @@ module Validations
     end
 
     def variable_valid?(given_variable, given_value)
+      # This selects from 
       validation = Validations.const_get @expected[given_variable].upcase
 
       true if validation[:types].include? given_value.class

@@ -18,6 +18,8 @@ class FunctionalityExecutor
 
   def arguments_valid?
     fail NotImplementedError, 'No function with that name.' if @function.nil?
+
+    # TODO: Add support for individual-field demarkation of error (can't be nil / invalid format)
 		fail ArgumentError, 'Arguments provided do not match arguments expected.' unless variables_valid?
 
     true
