@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ExecutionController < BaseController
-  skip_forgery_protection#
+  skip_forgery_protection
 
   def execute
     executor = FunctionalityExecutor.new \

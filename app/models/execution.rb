@@ -22,12 +22,19 @@ class Execution
 
   def build_dependencies
     @arguments.each do |argument, value|
+<<<<<<< Updated upstream
       instance_variable_set("@#{argument}", value) \
         unless instance_variable_defined?("@#{argument}")
+=======
+      # The `unless` is necessary to disable argument overwriting.
+      instance_variable_set('@' + argument, value) \
+        unless instance_variable_defined?('@' + argument)
+>>>>>>> Stashed changes
     end
   end
 
   def execute_function
+    # TODO: Move away from eval
     @result = eval @functionality.function_definition, binding
   end
 end
